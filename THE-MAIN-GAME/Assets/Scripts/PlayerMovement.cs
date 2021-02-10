@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-
+// Character animation and movement
     void Update()
     {
         moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
@@ -45,11 +45,13 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+// Moving the character
     public void FixedUpdate()
     {
         rb.MovePosition(rb.position + rb.velocity * Time.fixedDeltaTime);
     }
 
+// Flips the character
     public void Flip()
     {
         facingRight = !facingRight;
