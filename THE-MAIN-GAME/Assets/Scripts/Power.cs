@@ -9,7 +9,7 @@ public class Power : MonoBehaviour
     public float distance;
     public int damage;
     public LayerMask whatIsSolid;
-    bool isRight;
+    public bool isRight;
 
     private void Start()
     {
@@ -37,5 +37,14 @@ public class Power : MonoBehaviour
         }
 
     }
+
+    public void PowerFlip()
+    {
+        Vector3 Scaler = transform.localScale;
+        Scaler.x *= -1;
+        transform.localScale = Scaler;
+    }
+
+
 
 }
