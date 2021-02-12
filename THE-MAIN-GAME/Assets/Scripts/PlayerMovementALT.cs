@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovementALT : MonoBehaviour
 {
     public float speed;
 
@@ -19,7 +19,8 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-// Character animation and movement
+
+    // Update is called once per frame
     void Update()
     {
         moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
@@ -33,30 +34,7 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("isRunning", true);
         }
 
-        rb.velocity = moveInput * speed * Time.deltaTime;
-
-        if (!facingRight && moveInput.x > 0)
-        {
-            Flip();
-        }
-        else if (facingRight && moveInput.x < 0)
-        {
-            Flip();
-        }
+        
+        
     }
-
-// Moving the character
-    public void FixedUpdate()
-    {
-        rb.MovePosition(rb.position + rb.velocity * Time.fixedDeltaTime);
-    }
-
-// Flips the character
-    public void Flip(){
-        facingRight = !facingRight;
-        Vector3 Scaler = transform.localScale;
-        Scaler.x *= -1;
-        transform.localScale = Scaler;
-    }
-
 }
